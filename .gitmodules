@@ -1,0 +1,9 @@
+[submodule "mytutor-backend"]
+	path = mytutor-backend
+	url = https://github.com/behaylugule/mytutor-backend.git
+	branch = main
+
+[submodule "mytutor-frontend"]
+	path = mytutor-frontend
+	url = https://github.com/behaylugule/mytutor-frontend.git
+	branch = main
