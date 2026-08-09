@@ -53,7 +53,8 @@ secrets:
 
 Create `etutor_api/.env` inside `DEPLOY_PATH` using
 `etutor_api/.env.example` as the template. The deployment archive deliberately
-does not overwrite that file or uploaded media.
+does not include environment/secret files, database dumps, uploaded media, or
+generated static files.
 
 The workflow installs requirements in `VENV_PATH`, runs migrations, collects
 static files, performs Django deployment checks, and touches `tmp/restart.txt`.
@@ -73,7 +74,9 @@ secrets:
 | `DEPLOY_SSH_KEY` | The full private deployment key |
 | `SSH_KNOWN_HOSTS` | The verified `ssh-keyscan` output |
 
-Add these Actions environment variables when the defaults are not correct:
+Add these Actions **repository variables** when the defaults are not correct.
+They must be repository-level variables because the validation/build job does
+not enter the protected `production` environment:
 
 | Variable | Default |
 |---|---|
