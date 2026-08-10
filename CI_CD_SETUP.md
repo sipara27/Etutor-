@@ -1,14 +1,14 @@
-# MyTutor CI/CD setup
+# MyTutor monorepo CI/CD setup
 
-The frontend and backend are separate Git repositories. Each repository now has
-its own GitHub Actions pipeline:
+The frontend and backend are tracked directly in the `hagiye/Mytutor_p`
+repository. The production pipelines live at the repository root:
 
-- `mytutor-backend/.github/workflows/ci-cd.yml`
-- `mytutor-frontend/.github/workflows/ci-cd.yml`
+- `.github/workflows/backend-ci-cd.yml`
+- `.github/workflows/frontend-ci-cd.yml`
 
-A pull request runs validation only. A successful push to `main` packages the
-application, uploads it to cPanel over SSH, activates it, restarts Passenger,
-and verifies the public URL.
+A pull request runs validation only. A successful push to `main` runs the
+pipeline for each application whose files changed, packages it, uploads it to
+cPanel over SSH, restarts Passenger, and verifies the public URL.
 
 ## 1. Rotate exposed credentials
 
@@ -35,11 +35,11 @@ ssh-keyscan -H -p 22 mytutor.com.et
 The complete output line is the value of `SSH_KNOWN_HOSTS`. Do not skip host-key
 verification.
 
-## 3. Configure the backend GitHub repository
+## 3. Configure the backend production environment
 
-In `behaylugule/mytutor-backend`, create an Actions environment named
-`production`, restrict deployment branches to `main`, and add these environment
-secrets:
+In `hagiye/Mytutor_p`, create an Actions environment named
+`production-backend`, restrict deployment branches to `main`, and add these
+environment secrets:
 
 | Secret | Example/value |
 |---|---|
@@ -59,11 +59,11 @@ generated static files.
 The workflow installs requirements in `VENV_PATH`, runs migrations, collects
 static files, performs Django deployment checks, and touches `tmp/restart.txt`.
 
-## 4. Configure the frontend GitHub repository
+## 4. Configure the frontend production environment
 
-In `behaylugule/mytutor-frontend`, create an Actions environment named
-`production`, restrict deployment branches to `main`, and add these environment
-secrets:
+In `hagiye/Mytutor_p`, create an Actions environment named
+`production-frontend`, restrict deployment branches to `main`, and add these
+environment secrets:
 
 | Secret | Example/value |
 |---|---|
@@ -82,41 +82,27 @@ not enter the protected `production` environment:
 |---|---|
 | `NEXT_PUBLIC_BASE_URL` | `https://api.mytutor.com.et` |
 | `NEXT_PUBLIC_CORS_URL` | `https://cors.nisirtech.com` |
-| `PRODUCTION_URL` | `https://mytutor.com.et/` |
+| `FRONTEND_PRODUCTION_URL` | `https://mytutor.com.et/` |
+| `BACKEND_PRODUCTION_URL` | `https://api.mytutor.com.et/` |
 
 Configure the cPanel Node.js application to use Node 20 and `server.js` as its
 startup file. The workflow deploys Next.js standalone output, so it does not need
 to install npm packages on the production server.
 
-## 5. Push the repositories
+## 5. Push the monorepo
 
-Commit and push inside each application repository. Their deployments are
-independent:
+Review and commit the frontend, backend, and root workflows together, then push
+the `main` branch of your repository:
 
 ```bash
-cd mytutor-backend
 git add .
-git commit -m "Add backend CI/CD"
-git push origin main
-
-cd ../mytutor-frontend
-git add .
-git commit -m "Add frontend CI/CD"
+git commit -m "Convert MyTutor to production monorepo"
 git push origin main
 ```
 
-After committing the new child revisions, update and push the root repository's
-gitlinks if the root project is still used:
-
-```bash
-cd ..
-git add .gitmodules mytutor-backend mytutor-frontend CI_CD_SETUP.md
-git commit -m "Configure MyTutor application repositories"
-git push origin main
-```
-
-The root `.gitmodules` file has been restored so a fresh clone can retrieve both
-applications with `git clone --recurse-submodules`.
+Changes under `mytutor-backend/` trigger the backend workflow. Changes under
+`mytutor-frontend/` trigger the frontend workflow. Both workflows can also be
+started manually from the GitHub Actions page.
 
 ## Rollback
 

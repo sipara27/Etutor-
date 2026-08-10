@@ -1,0 +1,9 @@
+// export const PRODUCTION_ENVIRONMENT = true;
+// export const DEVELOPMENT_API_URL="http://localhost/django-api"
+// export const DEVELOPMENT_API_URL="http://localhost:8000"
+// export const DEVELOPMENT_API_URL="http://192.168.8.107:8000"
+// export const DEVELOPMENT_API_URL ="http://192.168.8.120:8000"
+export const DEVELOPMENT_API_URL ="https://tutorhub.api.nisirtech.com"
+// export const DEVELOPMENT_API_URL="http://192.168.8.112:8000"
+// export const DEVELOPMENT_API_URL="http://192.168.43.95:8000"
+export const PRODUCTION_API_URL="https://tutorhub.api.nisirtech.com"

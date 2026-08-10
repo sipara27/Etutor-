@@ -1,0 +1,65 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+/.yarn
+.pnp.js
+dist/
+.history
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+build/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+web.tar.gz
+
+# local env files
+# .env.development
+# .env.production
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+node_modules/
+.next/
+node_modules
+fallback-development.js
+service-worker.js
+workbox*
+service-worker.js.map
+fallback-*
+run.sh
+.history
+
+# password
+.password
+
+node_modules/
+.env
+.next/
+dist/
+__pycache__/
+*.pyc
+
+# local frontend process logs
+.frontend-*.log
+.codex-*.log

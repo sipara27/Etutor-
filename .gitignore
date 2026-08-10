@@ -1,0 +1,25 @@
+# Workspace dependency and build output
+.pnpm-store/
+node_modules/
+**/node_modules/
+**/.next/
+**/dist/
+**/coverage/
+**/*.tsbuildinfo
+
+# Local submodule history backups retained during monorepo conversion
+**/.submodule-git-backup/
+
+# Python environments and generated files
+**/venv/
+**/.venv/
+**/__pycache__/
+**/*.pyc
+mytutor-backend/staticfiles/
+mytutor-backend/media/
+mytutor-backend/database_dumps/*.json
+
+# Local secrets and process output
+**/.env
+**/.password
+**/*.log

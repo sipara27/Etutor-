@@ -1,0 +1,56 @@
+.ant-radio-wrapper .ant-radio{
+    /* align-self: normal; */
+    /* margin-bottom: -9px; */
+}
+
+:where(.css-dev-only-do-not-override-f7vrd6).ant-radio-wrapper span.ant-radio+* {
+   display: flex;
+   align-items: center;
+}
+.font-bold p{
+   color: black;
+   
+}
+.answer p{
+    color: black;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.noSelect {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+  }
+
+
+  .watermark {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.808);
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 34px;
+    text-align: center;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    transform: rotate(45deg); /* Adjust the angle to tilt the watermark */
+    transform-origin: center; /* Ensure the rotation is centered */
+    width: 100%; /* Ensure the watermark covers the entire area */
+    height: 100%; /* Ensure the watermark covers the entire area */
+    overflow: hidden; /* Hide any overflow caused by rotation */
+    z-index: -10;
+}
+
+  .sensitiveContent {
+    position: relative;
+  }
+
+  .text-p p{
+    margin-bottom: 0 !important;
+  }

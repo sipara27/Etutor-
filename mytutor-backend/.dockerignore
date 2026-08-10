@@ -1,0 +1,44 @@
+# Virtual env and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Git and IDE
+.git/
+.gitignore
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local / deploy scripts (not needed in image)
+*.sh
+.deployignore
+.gitlab-ci.yml
+
+# Database and uploads (mount at runtime instead)
+db.sqlite3
+media/
+staticfiles/
+
+# Docs and misc
+README.md
+schema.yml
+*.md
+!database_dumps/README.md
+
+# Optional: keep database_dumps if you want to load fixtures in image
+# Uncomment next line to exclude dumps and reduce image size
+# database_dumps/

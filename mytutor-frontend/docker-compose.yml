@@ -1,0 +1,15 @@
+# eTutor Frontend only (Next.js)
+# Run: docker-compose up -d
+# App: http://localhost:3000
+# Set NEXT_PUBLIC_BASE_URL to your backend API URL when building.
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL:-http://localhost:8000}
+    container_name: etutor-web
+    ports:
+      - "3000:3000"

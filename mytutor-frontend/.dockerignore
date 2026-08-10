@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output (we build inside Docker)
+.next/
+out/
+build/
+dist/
+
+# Environment files (pass via build-arg or runtime)
+.env
+.env.*
+!.env.example
+
+# Git and IDE
+.git/
+.gitignore
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing and misc
+coverage/
+.nyc_output
+*.md
+!README.md
+
+# Optional
+.DS_Store
+*.pem
