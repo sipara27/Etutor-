@@ -1,3 +1,4 @@
+
 # Workspace dependency and build output
 .pnpm-store/
 node_modules/
@@ -7,7 +8,7 @@ node_modules/
 **/coverage/
 **/*.tsbuildinfo
 
-# Local submodule history backups retained during monorepo conversion
+# Local submodule history backups
 **/.submodule-git-backup/
 
 # Python environments and generated files
@@ -15,11 +16,25 @@ node_modules/
 **/.venv/
 **/__pycache__/
 **/*.pyc
+**/*.pyo
+
+# Django generated files
 mytutor-backend/staticfiles/
 mytutor-backend/media/
 mytutor-backend/database_dumps/*.json
 
 # Local secrets and process output
 **/.env
+**/.env.*
+!**/.env.example
 **/.password
 **/*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor files
+.vscode/
+.idea/
